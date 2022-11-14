@@ -6,7 +6,7 @@ import PrimaryButton from '../../../components/PrimaryButton';
 const Banner = () => {
     return (
         <div className="mb-5 ">
-            <div style={{backgroundImage:`url(${backgroundImage})`}}  className="hero-content flex-col lg:flex-row-reverse">
+            <div style={{backgroundImage:`url(${backgroundImage})`,backgroundSize:'cover' }}  className="hero-content flex-col lg:flex-row-reverse">
                 <img src={chair} alt='' className="lg:w-1/2 rounded-lg shadow-2xl" />
                 <div>
                     <h1 className="text-5xl font-bold">Your New Smile Starts <br /> Here</h1>
