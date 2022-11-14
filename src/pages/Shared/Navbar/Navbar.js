@@ -12,7 +12,7 @@ const Navbar = () => {
         <li><Link to='/'>Login</Link></li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 flex justify-between  ">
             <div className="navbar-start">
                
                 <Link to={'/'} className="btn btn-ghost normal-case text-xl">Dentist's Portal</Link>
