@@ -8,7 +8,7 @@ const MakeAppoinment = () => {
     return (
         <div style={{backgroundImage:`url(${appoinment})`}}  className=" bg-base-200  text-white">
             <div className="hero-content flex-col lg:flex-row  gap-x-7">
-                <img src={doctor} alt='' className=" lg:w-1/2 rounded-lg shadow-2xl  -mt-32" />
+                <img src={doctor} alt=''   className=" lg:w-1/2 rounded-lg shadow-2xl  -mt-32   hidden  lg:block" />
                 <div>
                     <h4 className='text-primary text-lg  font-bold' >Appointment</h4>
                     <h1 className="text-4xl font-bold">Make an appointment Today</h1>
