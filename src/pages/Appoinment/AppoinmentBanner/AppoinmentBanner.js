@@ -6,12 +6,6 @@ import { DayPicker } from 'react-day-picker';
 
 const AppoinmentBanner = ({selectedDate,setSelectedDate}) => {
 
-
-   
-  
-    
-  
-
     return (
         <header  className='my-6'>
             <div className="hero ">

@@ -1,0 +1,85 @@
+
+import { format } from 'date-fns';
+
+const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
+    const { name: treatementName, slots } = treatment
+    const date = format(selectedDate, 'PP')
+
+
+    const handleBooking = (e) => {
+        e.preventDefault();
+        const form = e.target
+        const slot = form.slot.value
+        const name = form.name.value
+        const email = form.email.value
+        const phone = form.phone.value
+
+        const booking = {
+
+            selectedDate: date,
+            treatment: treatementName,
+            slot,
+
+            patient: name,
+            email,
+            phone
+
+        }
+        console.log(booking)
+        setTreatment(null)
+
+
+
+    }
+
+
+
+    return (
+        <>
+
+
+            {/* The button to open modal */}
+
+
+            {/* Put this part before </body> tag */}
+            <input type="checkbox" id="booking-modal" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box relative">
+                    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h3 className="text-lg font-bold">{treatementName}</h3>
+
+                    <form onSubmit={handleBooking} className='grid grid-cols-1 gap-4 mt-6' >
+                        <input type="text" placeholder="Type here" className="input input-bordered " disabled value={date} />
+                        <select name='slot' className="select select-bordered w-full max-w-xs">
+
+                            {
+                                slots?.length > 0 ? slots.map((slot, index) => <option
+                                    key={index}
+                                    value={slot}   >{slot}</option>) : ''
+                            }
+
+
+
+
+
+                        </select>
+                        <input name='name' type="text" placeholder="Full Name" className="input input-bordered " />
+                        <input name='email' type="email" placeholder="Email Adress" className="input input-bordered " />
+                        <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered " />
+
+                        <input type="submit" value='Submit' className="btn btn-accent input-bordered " />
+
+
+
+
+                    </form>
+
+
+                </div>
+            </div>
+
+        </>
+    );
+};
+
+export default BookingModal;
