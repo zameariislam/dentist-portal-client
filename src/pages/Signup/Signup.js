@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { AuthContext } from '../../context/AuthProvider';
 
 const Signup = () => {
+
+    const { createUser } = useContext(AuthContext)
+
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const handleSignup = (data) => {
         console.log(data)
+        const{email,password}=data
+        createUser(email,password)
+        .then(result=>{
+          const   user=result.user;
+           console.log(user)
+
+
+        })
+        .catch(error=>console.log(error.message))
 
     }
 
@@ -42,21 +55,22 @@ const Signup = () => {
 
                         </label>
                         <input {...register("password",
-                            { required: "password is required", minLength: { value: 6, message: 'Password must be 6 character' },
-                          pattern:{value:/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/ ,
-                        message:'Password must be strong'}  })}
+                            {
+                                required: "password is required", minLength: { value: 6, message: 'Password must be 6 character' },
+                                pattern: {
+                                    value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/,
+                                    message: 'Password must have uppercase special charcter and number'
+                                }
+                            })}
                             type="password" placeholder="Type here" className="input input-bordered w-full " />
                         {errors.password && <p className='text-red-600' role="alert">{errors.password?.message}</p>}
                     </div>
 
-                    <div className="form-control w-full ">
-                        <label className="label">
-                            <span className="label-text"></span>
 
-                        </label>
-                        <input type="submit" value='Signup' className="btn btn-accent input-bordered w-full " />
 
-                    </div>
+                    <input type="submit" value='Signup' className="btn btn-accent input-bordered w-full mt-4 " />
+
+
 
 
                 </form>
