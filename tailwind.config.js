@@ -10,6 +10,7 @@ module.exports = {
 
   daisyui: {
     themes: [
+      
       {
         mytheme: {
           primary: "#0FCFEC",

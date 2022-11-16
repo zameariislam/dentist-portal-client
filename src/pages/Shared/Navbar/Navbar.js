@@ -27,6 +27,7 @@ const Navbar = () => {
         <>
         
         <li><Link to='/dashboard'>Dashboard</Link></li>
+        <li className='text-blue-500' ><h1>{user.displayName}</h1></li>
         <li><button  onClick={handleLogOut}  >SignOut</button></li> 
 
         

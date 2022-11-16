@@ -10,9 +10,13 @@ const AvailableAppoinment = ({ selectedDate }) => {
 
 
     useEffect(() => {
-        fetch('appoinmentOptions.json')
+        fetch('http://localhost:5000/appoinmentOptions')
             .then(res => res.json())
-            .then(data => setAppoinmentOptions(data))
+            .then(data => {
+
+
+                setAppoinmentOptions(data.data)
+            })
 
     }, [])
 
@@ -31,7 +35,7 @@ const AvailableAppoinment = ({ selectedDate }) => {
 
             </div>
             {
-                treatment && <BookingModal  setTreatment={setTreatment}  selectedDate={selectedDate} treatment={treatment} />
+                treatment && <BookingModal setTreatment={setTreatment} selectedDate={selectedDate} treatment={treatment} />
             }
 
 

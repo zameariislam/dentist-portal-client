@@ -9,9 +9,11 @@ const Login = () => {
 
 
     const [loginError, setLoginError] = useState('')
-    const { signIn } = useContext(AuthContext)
+    const { signIn,loading,user } = useContext(AuthContext)
+    
     let navigate = useNavigate()
     let location = useLocation()
+    console.log(loading)
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     let from = location.state?.from?.pathname || "/";
