@@ -1,15 +1,16 @@
 import React from 'react';
-import { useState } from "react";
+
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 
 const Login = () => {
 
-    const { register, handleSubmit } = useForm();
-    const [data, setData] = useState("");
+    const { register, handleSubmit, formState: { errors } } = useForm();
+   
 
-    const handleLogin=(data)=>{
+    const handleLogin = (data) => {
         console.log(data)
+        console.log(errors)
     }
     return (
         <div className='h-[800px] flex items-center justify-center '>
@@ -24,7 +25,10 @@ const Login = () => {
                             <span className="label-text">Email</span>
 
                         </label>
-                        <input {...register("email")} type="email" className="input input-bordered w-full max-w-xs" />
+                        <input {...register("email", { required: "Email Address is required" })}
+                            type="email" className="input input-bordered w-full max-w-xs" />
+
+                        {errors.email && <p  className='text-red-600' role="alert">{errors.email?.message}</p>}
 
 
                     </div>
@@ -33,7 +37,10 @@ const Login = () => {
                             <span className="label-text">Password</span>
 
                         </label>
-                        <input {...register("password")} type="password" placeholder="Type here" className="input input-bordered w-full " />
+                        <input {...register("password", 
+                        { required: "password is required",minLength:{value:6,message:'Password must be 6 character'} })}
+                            type="password" placeholder="Type here" className="input input-bordered w-full " />
+                             {errors.password && <p  className='text-red-600' role="alert">{errors.password?.message}</p>}
 
                         <label className="label">
                             <span className="label-text">Forget Password ?</span>
