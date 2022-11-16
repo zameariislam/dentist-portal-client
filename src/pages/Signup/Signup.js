@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../context/AuthProvider';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
 
