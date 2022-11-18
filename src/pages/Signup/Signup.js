@@ -18,7 +18,7 @@ const Signup = () => {
     const handleSignup = (data) => {
 
         setSignUpError('')
-        console.log(data)
+       
         const { email, password, name } = data
         createUser(email, password)
             .then(result => {
@@ -29,7 +29,9 @@ const Signup = () => {
                     displayName: name
                 })
                     .then(() => {
-                        navigate('/')
+                        saveUser(name, email)
+
+
                     })
                     .catch(error => console.log(error))
 
@@ -44,6 +46,37 @@ const Signup = () => {
             )
 
     }
+
+    const saveUser = (name, email) => {
+        console.log('i AM SAVE USER')
+
+        const user = {
+            name,
+            email
+        }
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('save user', data)
+                navigate('/')
+            })
+            .catch(error => console.log(error))
+
+
+
+
+
+    }
+
 
     return (
         <div className='h-[800px] flex items-center justify-center '>

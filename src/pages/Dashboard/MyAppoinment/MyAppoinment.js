@@ -1,7 +1,7 @@
 import { useQueries, useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
-import Loading from '../../Shared/Loading/Loading';
+
 
 const MyAppoinment = () => {
 
@@ -9,9 +9,7 @@ const MyAppoinment = () => {
     const { user } = useContext(AuthContext)
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`
-    console.log(url)
-   
-
+    
 
 
     const { data:bookings = []} = useQuery({
@@ -51,8 +49,8 @@ const MyAppoinment = () => {
                     </thead>
                     <tbody>
                         {
-                            bookings.map((booking, index) => (<tr>
-                                <th>{index}</th>
+                            bookings.map((booking, index) => (<tr key={booking._id} >
+                                <th>{(index+1)}</th>
                                 <td>{booking?.patient}</td>
                                 <td>{booking?.treatment}</td>
                                 <td>{booking?.appoinmentDate}</td>
