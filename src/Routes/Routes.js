@@ -8,6 +8,7 @@ import Login from "../pages/login/Login";
 import Signup from "../pages/Signup/Signup";
 import PrivateRoute from "./PrivateRoutes/PrivateRoute";
 import DasboardLayout from "../Layout/DasboardLayout";
+import MyAppoinment from "../pages/Dashboard/MyAppoinment/MyAppoinment";
 
 
 
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <Dashboard />,
+                element: <MyAppoinment/>,
             }
 
         ]
